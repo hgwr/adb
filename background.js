@@ -61,6 +61,9 @@ window.AdbHelper.DEFAULT_SELECTOR_RULES = [
 ].concat(GENERATED_SELECTORS);
 
 window.AdbHelper.DEFAULT_EXCEPTION_RULES = [
+  '^https?://[^/]+\\.playstation\\.com/',
+  '^https?://[^/]+\\.xbox\\.com/',
+  '^https?://[^/]+\\.amazon\\.co\\.jp/',
   '^https?://[^/]+\\.go\\.jp/',
   '^https?://[^/]+\\.gov/'
 ];
