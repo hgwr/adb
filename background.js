@@ -57,18 +57,6 @@ window.AdbHelper.DEFAULT_SELECTOR_RULES = [
   [[], 'iframe[src*="adv"]'],
   [[], 'iframe[src*="ads"]'],
   [[], 'iframe[src*="doubleclick.net"]'],
-  [[], 'param[src*="hitomedia.jp"][src*="uploads/banner"]'],
-  [['mail.google.com'], 'div.oM div[id^=":"] div.vb'],
-  [['yahoo.co.jp'], '#brandpanel'],
-  [['yahoo.co.jp'], 'div#pos-sqm'],
-  [['yahoo.co.jp'], 'div#myjsqb'],
-  [['yahoo.co.jp'], 'div.adTyumoku'],
-  [['yahoo.co.jp'], 'a[href^="http://ard.yahoo.co.jp/"]'],
-  [['yahoo.co.jp'], 'div.myjcentertxt > span.myjct'],
-  [['yahoo.co.jp'], '#pos-lrec'],
-  [['yahoo.co.jp'], '#pos-ct'],
-  [['yahoo.co.jp'], '#myyads'],
-  [['yahoo.co.jp'], 'param[value*="ah.yimg.jp/bdv"]'],
   [[], '.adv']
 ].concat(GENERATED_SELECTORS);
 
