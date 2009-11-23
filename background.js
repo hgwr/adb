@@ -64,6 +64,7 @@ window.AdbHelper.DEFAULT_EXCEPTION_RULES = [
   '^https?://[^/]+\\.playstation\\.com/',
   '^https?://[^/]+\\.xbox\\.com/',
   '^https?://[^/]+\\.amazon\\.co\\.jp/',
+  '^https?://[^/]+\\.amazon\\.com/',
   '^https?://[^/]+\\.go\\.jp/',
   '^https?://[^/]+\\.gov/'
 ];
