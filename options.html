@@ -1,0 +1,103 @@
+<html>
+<head>
+<style type="text/css">
+#evaluationResult {
+  font-family: monospace;
+  line-height: 140%;
+  white-space: pre;
+}
+textarea {
+  font-family: monospace;
+  line-height: 140%;
+  white-space: pre;
+  overflow: scroll;
+}
+ul {
+	padding: 0em;
+}
+li {
+  list-style-type: none;
+	padding-left: 0.5em;
+}
+.float {
+  margin-right: 1em;
+  float: left;
+}
+.br {
+  clear: left
+}
+</style>
+<script type="text/javascript" src="options.js"></script>
+<title>Adb options</title>
+</head>
+<body>
+<form>
+<h2>Adb Options</h2>
+
+<div id="evaluationResult"></div>
+
+<div class="float">
+  <h3>Options</h3>
+  <ul>
+    <li><input type="checkbox" id="enableXPathRules"><label for="enableXPathRules">Enable XPath Filter Rules</label>
+    <li><input type="checkbox" id="enableSelectorRules"><label for="enableSelectorRules">Enable CSS Selector Filter Rules</label>
+    <li>Block Method
+    <ul>
+      <li><input type="radio" name="blockMethod" id="removeChild" value="removeChild"><label for="removeChild"><code>parent.removeChild(node);</code></label>
+      <li><input type="radio" name="blockMethod" id="displayNone" value="displayNone"><label for="displayNone"><code>node.style.display = 'none';</code></label>
+      <li><input type="radio" name="blockMethod" id="highlight" value="highlight"><label for="highlight">Highlight</label>
+    </ul>
+    <li><input type="checkbox" id="enableAdbCss"><label for="enableAdbCss">Enable Adb CSS</label> (<a href="adb.css">adb.css</a>)
+    <li><input type="checkbox" id="enableUserCss"><label for="enableUserCss">Enable User CSS</label>
+    <li><input type="checkbox" id="enableExceptionRules"><label for="enableExceptionRules">Enable Exception Rule</label>
+  </ul>
+</div>
+
+<div class="float">
+  <h3>XPath Filter Rules</h3>
+  <div><textarea id="xpathRules" cols="60" rows="12"></textarea></div>
+  <div>
+    <input type="button" id="updateXPathRules" value="Update">
+    <input type="button" id="restoreXPathRules" value="Restore Defaults">
+  </div>
+  <pre>
+  XPath
+  {RE} XPath
+  {RE} {exception RE} XPath
+  </pre>
+</div>
+
+<div class="float">
+  <h3>CSS Selector Filter Rules</h3>
+  <div><textarea id="selectorRules" cols="60" rows="12"></textarea></div>
+  <div>
+    <input type="button" id="updateSelectorRules" value="Update">
+    <input type="button" id="restoreSelectorRules" value="Restore Defaults">
+  </div>
+  <pre>
+  CSS Selector
+  {RE} CSS Selector
+  {RE} {exception RE} CSS Selector
+  </pre>
+</div>
+
+<div class="float">
+  <h3>User CSS</h3>
+  <div><textarea id="userCss" cols="60" rows="12"></textarea></div>
+  <div>
+    <input type="button" id="updateUserCss" value="Update">
+  </div>
+</div>
+
+<div class="float">
+  <h3>Exception Rule (RegExp)</h3>
+  <div><textarea id="exceptionRules" cols="60" rows="12"></textarea></div>
+  <div>
+    <input type="button" id="updateExceptionRules" value="Update">
+    <input type="button" id="restoreExceptionRules" value="Restore Defaults">
+  </div>
+</div>
+
+<div class="br"></div>
+</form>
+</body></html>

@@ -1,0 +1,6 @@
+*~
+*_flymake.js
+build/*
+selectors_generated.js
+xpaths_generated.js
+adb.css
