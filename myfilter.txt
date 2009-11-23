@@ -1,5 +1,3 @@
-[Adblock Plus 1.1]
-! Checksum: LtVp4Z3Aygn+eNSyWBAg3w
 @@|http://www.eajapan.co.jp/
 @@|http://*.go.jp/
 @@||netanswerplus.saisoncard.co.jp^$document
@@ -24,6 +22,8 @@
 |http://img.47news.jp/flash/mitsuki.swf
 |http://bijint.com/jp/img/adv/*
 |http://www*.a8.net/
+##.advertisement
+##.ads-google
 ##a[href^="http://rss.rssad.jp/rss/ad/"]
 bijint.com##a[href^="http://www.amazon.co.jp/gp/product/"]
 www.openspc2.org##a[href*="/openspace0d-22/"]
@@ -36,4 +36,15 @@ mail.live.com##div.TodayContent
 ##div#myyads
 ##img[src*="hitomedia.jp"][src*="uploads/banner"]
 ##param[src*="hitomedia.jp"][src*="uploads/banner"]
-##.advertisement
+##param[src*="hitomedia.jp"][src*="uploads/banner"]
+mail.google.com##div.oM div[id^=":"] div.vb
+yahoo.co.jp###brandpanel
+yahoo.co.jp##div#pos-sqm
+yahoo.co.jp##div#myjsqb
+yahoo.co.jp##div.adTyumoku
+yahoo.co.jp##a[href^="http://ard.yahoo.co.jp/"]
+yahoo.co.jp##div.myjcentertxt > span.myjct
+yahoo.co.jp###pos-lrec
+yahoo.co.jp###pos-ct
+yahoo.co.jp###myyads
+yahoo.co.jp##param[value*="ah.yimg.jp/bdv"]
