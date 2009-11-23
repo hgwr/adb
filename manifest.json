@@ -1,6 +1,6 @@
 {
   "name": "adb",
-  "version": "0.2",
+  "version": "0.3",
   "description": "Ad Blocker",
   "update_url": "http://www.moreslowly.jp/chrome/extensions/adb/updates.xml",
   "content_scripts": [ {
