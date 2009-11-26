@@ -1,10 +1,10 @@
 [Adblock Plus 1.1]
-! Checksum: OOPYnQsyHrMJjaZVKocNcA
+! Checksum: Iuu0ZImlYRrq6p5/XzuYIA
 !
 ! Rick752's EasyList - Global English ad blocking subscription
 ! https://easylist.adblockplus.org/
 ! License: http://creativecommons.org/licenses/by-sa/3.0/
-! Last modified: 18 Nov 2009 23:08 UTC
+! Last modified: 24 Nov 2009 17:54 UTC
 ! Expires: 5 days (updates automatically every 5 days)
 !
 ! Please report unblocked ads or mistakenly blocked content:
@@ -67,6 +67,7 @@
 /ad/sponsor
 /ad/text
 /ad/view
+/ad1x1home.
 /ad2.aspx
 /ad?count=
 /ad_configuration
@@ -121,6 +122,7 @@
 /adgraphics/*
 /adguru.
 /adheader
+/adhomepage.jsp
 /adhtml/*
 /adiframe.
 /adiframe/*
@@ -171,6 +173,7 @@
 /ads.htm
 /ads.php?
 /ads/frame
+/ads/html/*
 /ads/java
 /ads/paid
 /ads/right
@@ -213,6 +216,7 @@
 /adsnew.
 /adsonar.
 /adspace
+/adsponsor.
 /adspro/*
 /adsremote.
 /adsreporting/*
@@ -486,6 +490,7 @@
 /reklama.
 /reclame/*
 /requestadvertisement.
+/requestmyspacead.
 /rotateads.
 /scripts/ads/*
 /sevenl_ad.
@@ -870,7 +875,7 @@ z/adx.js
 ###adsright
 ###adtech_takeover
 ###adtop
-~finn.no,~kalaydo.de###advert
+~finn.no,~kalaydo.de,~sepa.org.uk###advert
 ###advert-boomer
 ###advert-header
 ###advert-leaderboard
@@ -955,7 +960,7 @@ z/adx.js
 ###fl_hdrAd
 ###footer-sponsored
 ###footer_ad
-###footer_ads
+~investopedia.com###footer_ads
 ###footerAdDiv
 ###fusionad
 ###ga_300x250
@@ -998,6 +1003,7 @@ z/adx.js
 ###left_adspace
 ###leftad
 ###linkAds
+###longAdSpace
 ###main-ad
 ###main_ad
 ###main_rec_ad
@@ -1015,6 +1021,7 @@ z/adx.js
 ###mpuDiv
 ###mpu_banner
 ###mpu_holder
+###n_sponsor_ads
 ###navi_banner_ad_780
 ###new_topad
 ###noresultsads
@@ -1079,6 +1086,7 @@ z/adx.js
 ###sponsoredresults_top
 ###spotlightad
 ###squareAd
+###squareAdSpace
 ###sticky-ad
 ###stickyBottomAd
 ###story-sponsoredlinks
@@ -1163,6 +1171,7 @@ z/adx.js
 ##.ad-links
 ##.ad-medium
 ##.ad-medium-two
+##.ad-other
 ##.ad-rectangle
 ##.ad-rectangle-text
 ##.ad-section
@@ -1298,6 +1307,8 @@ z/adx.js
 ##.advertContainer
 ##.advertRight
 ##.advertText
+##.advert_box
+##.advert_leaderboard
 ##.advertise
 ##.advertise-horz
 ##.advertise-vert
@@ -1479,6 +1490,7 @@ z/adx.js
 ##.rightad_1
 ##.rightad_2
 ##.rightadunit
+##.rightcol_boxad
 ##.rt_ad1_300x90
 ##.rt_ad_300x250
 ##.rt_ad_call
@@ -1494,6 +1506,7 @@ z/adx.js
 ##.side-ad
 ##.sidead
 ##.sidebar-text-ad
+##.sidebarAdvert
 ##.sidebar_ad
 ##.sidebarad
 ##.sidebarad_bottom
@@ -2028,6 +2041,7 @@ z/adx.js
 ||tradedoubler.com^$third-party
 ||tradepub.com^$third-party
 ||trafficmasterz.net^$third-party
+||travelscream.com^$third-party
 ||travidia.com^$third-party
 ||triadmedianetwork.com^$third-party
 ||tribalfusion.com^$third-party
@@ -2293,6 +2307,7 @@ asylum.com##.sidebarBanner
 asylum.com##.topBanner
 atom.com###iframe_container300x250
 au.movies.yahoo.com##table.y7mv-wraptable[width="750"][height="112"]
+au.yahoo.com###y708-windowshade
 audioreview.com##.MiddleTableRightColumn
 audioreview.com##script + table[width="539"]
 audioreview.com##table[width="300"][style="border: 1px solid rgb(65, 103, 122); margin-left: 10px;"]
@@ -2542,6 +2557,7 @@ itnewsonline.com##td[width="120"]
 itp.net##div[id^="oas-"]
 itworld.com###more_resources
 itworld.com###partner_strip
+investopedia.com###leader
 ixquick.com##td[bgcolor="#f7f9ff"]
 jeuxvideo-flash.com,tomsgames.com,tomsgames.it###pub_header
 jpost.com###topBanner
@@ -2601,6 +2617,7 @@ makeuseof.com##a[href^="http://makeuseof.com/short/ads/"]
 map24.com###cont_m24up
 mapquest.com###offers
 marketingpilgrim.com###ad
+mashable.com##.header-banner
 meebo.com##div[id$="MediaBar"]
 megagames.com##table[width^="7"][border="1"][height="92"]
 mercurynews.com###mn_SP_Links
@@ -2648,6 +2665,7 @@ myfoxphoenix.com###leaderboard
 myfoxphoenix.com##.marketplace
 myfoxphoenix.com##.module.horizontal
 myfoxphoenix.com##.vert.expanded
+mywebsearch.com##a[id^="rst"].desc
 nearlygood.com###abf
 neopets.com###ban
 neopets.com###ban_bottom
@@ -2991,10 +3009,12 @@ zone.msn.com##.SuperBannerTVMain
 @@||addictinggames.com/jsource/ad_functions.js$script
 @@||adjuggler.com^$script,domain=videodetective.com
 @@||adm.fwmrm.net^*/admanager-debug.swf?$object_subrequest
+@@||adm.fwmrm.net/p/viddler_flashplayer/admanager.swf?$object_subrequest
 @@||ads.adultswim.com/js.ng/site=toonswim&toonswim_pos=600x400_ctr&toonswim_rollup=games$script
 @@||ads.adap.tv/control?$object_subrequest,domain=xxlmag.com
 @@||ads.adap.tv/crossdomain.xml$object_subrequest,domain=xxlmag.com
 @@||ads.adap.tv/redir/client/adplayer.swf?$object_subrequest,domain=xxlmag.com
+@@||ads.ahds.ac.uk^$~document
 @@||ads.forbes.com/realmedia/ads/*@videopreroll$script
 @@||ads.fox.com/fox/black_2sec_600.flv$object_subrequest
 @@||ads.hulu.com/*.swf$object_subrequest
@@ -3028,6 +3048,7 @@ zone.msn.com##.SuperBannerTVMain
 @@||cubeecraft.com/images/home/features/300x250/$image
 @@||d1.openx.org/ajs.php?zoneid=25815&$script,domain=rottentomatoes.com
 @@||deviantart.com/global/difi/?$subdocument
+@@||direct.fairfax.com.au/hserver/*/site=vid.*/adtype=embedded/$script
 @@||doubleclick.net/adj/*smartclip$domain=last.fm|lastfm.de
 @@||doubleclick.net/adj/imdb2.consumer.video/*;sz=320x240,$script
 @@||doubleclick.net/adj/nbcu.nbc/videoplayer-$script
@@ -3045,6 +3066,7 @@ zone.msn.com##.SuperBannerTVMain
 @@||gannett.gcion.com/addyn/3.0/*/adtech;alias=pluck_signin$script
 @@||gws.ign.com/ws/search?*&google_adpage=$script
 @@||i.cdn.turner.com^*/adserviceadapter.swf$object
+@@||i.goal.com/web/goal/*-160x600/
 @@||im.mstar.com/ads/*.flv$object_subrequest
 @@||imdb.com/images/*/js/ads.js$script
 @@||img.thedailywtf.com/images/ads/$image
