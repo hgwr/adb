@@ -1,10 +1,27 @@
-var bg = chrome.extension.getBackgroundPage();
+var bg = chrome.extension.getBackgroundPage(),
+  checkBoxToTextarea = {
+    enableXPathRules: 'xpathRules',
+    enableSelectorRules: 'selectorRules',
+    enableAdbCss: null,
+    enableUserCss: 'userCss',
+    enableExceptionRules: 'exceptionRules'
+  },
+  checkBoxes = [];
+
+for (k in checkBoxToTextarea) {
+  if (checkBoxToTextarea.hasOwnProperty(k)) {
+    checkBoxes.push(k);
+  }
+}
 
 function $(s) { return document.getElementById(s); }
 
 function createCheckboxListener(name) {
   return function () {
     bg.AdbData[name] = $(name).checked;
+    if (checkBoxToTextarea[name]) {
+      $(checkBoxToTextarea[name]).disabled = !bg.AdbData[name];
+    }
     bg.AdbHelper.saveData();
   };
 }
@@ -31,7 +48,8 @@ function updateRules(key, ruleEval) {
     var textarea = $(key),
         evaluationResult = $('evaluationResult'),
         newRule = null, newRules = [],
-        lines = textarea.value.split("\n"),
+        text = textarea.value,
+        lines = text.split("\n"),
         i = 0, j = 0, errors = [], m;
     for (; i < lines.length; i++) {
       if (isBlank(lines[i])) { continue; }
@@ -63,18 +81,20 @@ function updateRules(key, ruleEval) {
     } else {
       evaluationResult.innerHTML = "Updated.";
       bg.AdbData[key] = newRules;
+      bg.AdbData[key + "Text"] = text;
       bg.AdbHelper.saveData();
     }
     return false;
   };
 }
 
-function restoreRules(key, defaultValue) {
+function restoreRules(key, defaultValue, textValue) {
   return function () {
     if (! window.confirm('Restore ?')) {
       return false;
     }
     bg.AdbData[key] = JSON.parse(JSON.stringify(defaultValue));
+    bg.AdbData[key + "Text"] = textValue;
     bg.AdbHelper.saveData();
     prepareForm();
     return false;
@@ -89,7 +109,8 @@ function updateUserCss() {
 
 function updateExceptionRules() {
   var evaluationResult = $('evaluationResult'),
-      lines = $('exceptionRules').value.split("\n"),
+      text = $('exceptionRules').value,
+      lines = text.split("\n"),
       newRules = [],
       i = 0, errors = [];
   
@@ -108,34 +129,24 @@ function updateExceptionRules() {
   } else {
     evaluationResult.innerHTML = "Updated.";
     bg.AdbData.exceptionRules = newRules;
+    bg.AdbData.exceptionRulesText = text;
     bg.AdbHelper.saveData();
   }
   return false;
 }
 
-function rulesToText(rulesArray) {
-  if (! rulesArray) return "";
-  var rulesText = [],
-      i = 0; len = rulesArray.length;
-  for (; i < len; i++) {
-    if (rulesArray[i][0] && rulesArray[i][0].length > 0) {
-      rulesText[i] = ['{', rulesArray[i][0].join('} {'), '} ', rulesArray[i][1]].join('');
-    } else {
-      rulesText[i] = rulesArray[i][1];
-    }
-  }
-  return rulesText.join("\n");
-}
-
-var checkBoxes = ['enableXPathRules', 'enableSelectorRules', 'enableAdbCss', 'enableUserCss', 'enableExceptionRules'];
-
 function prepareForm() {
-  checkBoxes.forEach(function (k) { $(k).checked = bg.AdbData[k]; });
+  checkBoxes.forEach(function (k) {
+    $(k).checked = bg.AdbData[k];
+    if (checkBoxToTextarea[k]) {
+      $(checkBoxToTextarea[k]).disabled = !bg.AdbData[k];
+    }
+  });
   $(bg.AdbData.blockMethod).checked = true;
-  $('xpathRules').innerText = rulesToText(bg.AdbData.xpathRules);
-  $('selectorRules').innerText = rulesToText(bg.AdbData.selectorRules);
+  $('xpathRules').innerText = bg.AdbData.xpathRulesText;
+  $('selectorRules').innerText = bg.AdbData.selectorRulesText;
   $('userCss').innerText = bg.AdbData.userCss;
-  $('exceptionRules').innerText = bg.AdbData.exceptionRules.join("\n");
+  $('exceptionRules').innerText = bg.AdbData.exceptionRulesText;
 }
 
 function xpathEval(r) {
@@ -149,17 +160,14 @@ function selectorEval(r) {
 function onload() {
   prepareForm();
   checkBoxes.forEach(function (k) { $(k).addEventListener('click', createCheckboxListener(k)); });
-
-  ['removeChild', 'displayNone', 'highlight'
-  ].forEach(function (k) { $(k).addEventListener('click', setBlockMethod); });
-
+  ['removeChild', 'displayNone', 'highlight'].forEach(function (k) { $(k).addEventListener('click', setBlockMethod); });
   $('updateXPathRules').addEventListener('click', updateRules('xpathRules', xpathEval));
-  $('restoreXPathRules').addEventListener('click', restoreRules('xpathRules', bg.AdbHelper.DEFAULT_XPATH_RULES));
+  $('restoreXPathRules').addEventListener('click', restoreRules('xpathRules', bg.AdbHelper.DEFAULT_XPATH_RULES, bg.AdbHelper.DEFAULT_XPATH_RULES_TEXT));
   $('updateSelectorRules').addEventListener('click', updateRules('selectorRules', selectorEval));
-  $('restoreSelectorRules').addEventListener('click', restoreRules('selectorRules', bg.AdbHelper.DEFAULT_SELECTOR_RULES));
+  $('restoreSelectorRules').addEventListener('click', restoreRules('selectorRules', bg.AdbHelper.DEFAULT_SELECTOR_RULES, bg.AdbHelper.DEFAULT_SELECTOR_RULES_TEXT));
   $('updateUserCss').addEventListener('click', updateUserCss);
   $('updateExceptionRules').addEventListener('click', updateExceptionRules);
-  $('restoreExceptionRules').addEventListener('click', restoreRules('exceptionRules', bg.AdbHelper.DEFAULT_EXCEPTION_RULES));
+  $('restoreExceptionRules').addEventListener('click', restoreRules('exceptionRules', bg.AdbHelper.DEFAULT_EXCEPTION_RULES, bg.AdbHelper.DEFAULT_EXCEPTION_RULES_TEXT));
 }
 
 window.addEventListener("load", onload);

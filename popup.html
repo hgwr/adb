@@ -1,0 +1,19 @@
+<html><head>
+<script type="text/javascript" src="popup.js"></script>
+<title>Adb - Filter Test</title>
+</head>
+<body>
+<form>
+<div>Adb - Filter Test</div>
+<div><input type="text" id="rule" size="60"></div>
+<div>
+  <input type="radio" name="kind" id="xpath" value="xpath"><label for="xpath">XPath</label>
+  <input type="radio" name="kind" id="selector" value="selector" checked><label for="selector">CSS Selector</label>
+  <input type="button" value="Test" id="test">
+  <input type="button" value="Add" id="add">
+  <a href="options.html" target="_blank">Options</a>
+</div>
+<div id="excepted" style="color: green"></div>
+<div id="message"></div>
+</form>
+</body></html>

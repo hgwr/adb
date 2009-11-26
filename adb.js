@@ -29,6 +29,11 @@ var Adb = {
       node.style.borderWidth = '3px';
       node.style.borderColor = 'red';
       node.style.borderStyle = 'solid';
+    },
+    test: function (node) {
+      var origDisplay = node.style.display;
+      node.style.display = 'none';
+      window.setTimeout(function () { node.style.display = origDisplay; }, 3000);
     }
   },
 
@@ -112,11 +117,32 @@ var Adb = {
     }
   },
 
+  requestHandler: function(request, sender, sendResponse) {
+    if (request.action == "test") {
+      console.log("requestHandler test...");
+      if (request.kind == 'xpath') {
+        Adb.applyXPathRules(Adb.nodeOperators.test, [ [[], request.rule] ]);
+      } else if (request.kind == 'selector') {
+        Adb.applySelectorRules(Adb.nodeOperators.test, [ [[], request.rule] ]);
+      }
+      sendResponse({});    
+    } else if (request.action == "check_excepted") {
+      var i = 0, len = request.exceptionRules.length;
+      for (; i < len; i++) {
+        if (Adb.assertLocation([request.exceptionRules[i]])) {
+          sendResponse({ excepted: true });
+          return;
+        }
+      }      
+      sendResponse({ excepted: false });
+    } else {
+      sendResponse({});
+    }
+  },
+
   onload: function () {
-    chrome.extension.sendRequest({action: "data"},
-                                 function(response) {
-                                   Adb.applyData(JSON.parse(response));
-                                 });
+    chrome.extension.sendRequest({action: "data"}, function (response) { Adb.applyData(response); });
+    chrome.extension.onRequest.addListener(Adb.requestHandler);
   }
 };
 
