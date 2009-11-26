@@ -119,7 +119,6 @@ var Adb = {
 
   requestHandler: function(request, sender, sendResponse) {
     if (request.action == "test") {
-      console.log("requestHandler test...");
       if (request.kind == 'xpath') {
         Adb.applyXPathRules(Adb.nodeOperators.test, [ [[], request.rule] ]);
       } else if (request.kind == 'selector') {
