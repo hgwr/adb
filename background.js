@@ -1,5 +1,5 @@
 window.AdbData = {
-  enableXPathRules: false,
+  enableXPathRules: true,
   enableSelectorRules: true,
   blockMethod: 'removeChild',     // or 'displayNone', 'highlight'
   enableAdbCss: true,
