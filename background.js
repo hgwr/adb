@@ -12,7 +12,7 @@ window.AdbData = {
   userCss: "",
   exceptionRules: [ ],
   exceptionRulesText: "",
-  popupForm: { }
+  popupForm: { kind: 'selector' }
 };
 
 window.AdbHelper = {
