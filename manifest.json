@@ -1,6 +1,6 @@
 {
   "name": "adb",
-  "version": "0.4.2",
+  "version": "0.5",
   "description": "Ad Blocker",
   "icons": { "19" : "adb19x19.png", "128": "adb128.png" },
   "browser_action": {
