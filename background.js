@@ -106,6 +106,7 @@ function onload () {
 window.addEventListener("load", onload);
 
 /*** default rules ***/
+MARKER = "\n\n!----------------- default values -----------------\n\n";
 
 window.AdbHelper.DEFAULT_XPATH_RULES = [
   [[], '//*[@class="advertisement"]'],
@@ -114,7 +115,7 @@ window.AdbHelper.DEFAULT_XPATH_RULES = [
   [[], '//embed[contains(@src, "clickTAG")]/..'],
   [[], '//a[starts-with(@href, "http://rd") and contains(@href, "yahoo.co.jp/rd")]']
 ].concat(GENERATED_XPATHS);
-window.AdbHelper.DEFAULT_XPATH_RULES_TEXT =
+window.AdbHelper.DEFAULT_XPATH_RULES_TEXT = MARKER +
   window.AdbHelper.rulesToText(window.AdbHelper.DEFAULT_XPATH_RULES);
 
 window.AdbHelper.DEFAULT_SELECTOR_RULES = [
@@ -123,7 +124,7 @@ window.AdbHelper.DEFAULT_SELECTOR_RULES = [
   [[], 'iframe[src*="doubleclick.net"]'],
   [[], '.adv']
 ].concat(GENERATED_SELECTORS);
-window.AdbHelper.DEFAULT_SELECTOR_RULES_TEXT =
+window.AdbHelper.DEFAULT_SELECTOR_RULES_TEXT = MARKER +
   window.AdbHelper.rulesToText(window.AdbHelper.DEFAULT_SELECTOR_RULES);
 
 window.AdbHelper.DEFAULT_EXCEPTION_RULES = [
@@ -134,5 +135,5 @@ window.AdbHelper.DEFAULT_EXCEPTION_RULES = [
   '^https?://[^/]+\\.go\\.jp/',
   '^https?://[^/]+\\.gov/'
 ];
-window.AdbHelper.DEFAULT_EXCEPTION_RULES_TEXT =
+window.AdbHelper.DEFAULT_EXCEPTION_RULES_TEXT = MARKER +
   window.AdbHelper.DEFAULT_EXCEPTION_RULES.join("\n");
