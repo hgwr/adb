@@ -109,7 +109,7 @@ def main
   
   open('selectors_generated.js', 'w') do |f|
     f.write("var GENERATED_SELECTORS = [\n");
-    f.fwrite(selectors_with_hosts.map do |host_regexps, selector|
+    f.write(selectors_with_hosts.map do |host_regexps, selector|
                if host_regexps[0] == '' and host_regexps[1] == ''
                  "  [[], '%s']" % [selector]
                elsif host_regexps[0] == '' and host_regexps[1] != ''
