@@ -111,6 +111,7 @@ window.AdbHelper.DEFAULT_XPATH_RULES = [
   [[], '//*[@class="advertisement"]'],
   [[], '//*[contains(@src, "ad_script")]'],
   [[], '//img[contains(@src, "ad_banner")]'],
+  [[], '//embed[contains(@src, "clickTAG")]/..'],
   [[], '//a[starts-with(@href, "http://rd") and contains(@href, "yahoo.co.jp/rd")]']
 ].concat(GENERATED_XPATHS);
 window.AdbHelper.DEFAULT_XPATH_RULES_TEXT =
