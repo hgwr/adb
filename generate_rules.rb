@@ -109,23 +109,23 @@ def main
   
   open('selectors_generated.js', 'w') do |f|
     f.write("var GENERATED_SELECTORS = [\n");
-    selectors_with_hosts.each do |host_regexps, selector|
-      if host_regexps[0] == '' and host_regexps[1] == ''
-        f.write("  [[], '%s'],\n" % [selector])
-      elsif host_regexps[0] == '' and host_regexps[1] != ''
-        f.write("  [['.*', '%s'], '%s'],\n" % [host_regexps[1], selector])
-      elsif host_regexps[0] != '' and host_regexps[1] == ''
-        f.write("  [['%s'], '%s'],\n" % [host_regexps[0], selector])
-      else
-        f.write("  [['%s', '%s'], '%s'],\n" % [host_regexps[0], host_regexps[1], selector])
-      end
-    end
+    f.fwrite(selectors_with_hosts.map do |host_regexps, selector|
+               if host_regexps[0] == '' and host_regexps[1] == ''
+                 "  [[], '%s']" % [selector]
+               elsif host_regexps[0] == '' and host_regexps[1] != ''
+                 "  [['.*', '%s'], '%s']" % [host_regexps[1], selector]
+               elsif host_regexps[0] != '' and host_regexps[1] == ''
+                 "  [['%s'], '%s']" % [host_regexps[0], selector]
+               else
+                 "  [['%s', '%s'], '%s']" % [host_regexps[0], host_regexps[1], selector]
+               end
+             end.join(",\n"))
     f.write("];\n")
   end
 
   open('xpaths_generated.js', 'w') do |f|
     f.write("var GENERATED_XPATHS = [\n");
-    xpaths.map { |s| f.write("  [[], '%s'],\n" % s ) }
+    f.write(xpaths.map { |s| "  [[], '%s']" % s }.join(",\n"))
     f.write("];\n")
   end
 end
