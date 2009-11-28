@@ -90,17 +90,22 @@ var Adb = {
     }
   },
 
-  urlPatterns: [
-    [new RegExp('https?://(?:www.)?amazon.co.jp/.*/?(?:exec/obidos/ASIN|o/ASIN|dp)/([0-9]{10,})/?.*'), 'http://www.amazon.co.jp/dp/$1/']
+  abbrevRules: [
+    [ 'a[href*="amazon.co.jp"], a[href*="amazon.jp"]',
+      new RegExp('https?://(?:www.)?amazon(?:\\.co)?\\.jp/.*/?(?:exec/obidos/ASIN|o/ASIN|dp)/([0-9]{10,})/?.*'),
+      'http://www.amazon.co.jp/dp/$1/' ]
   ],
   
   abbrevUrl: function() {
-    var nodes = document.querySelectorAll('a[href="amazon.co.jp"]'),
-      i = 0, len = nodes.len, a, j = 0;
-    for (; i < len; i++) {
-      a = nodes[i];
-      for (j = 0; j < Adb.urlPatterns.length; j++) {
-        a.href = a.href.replace(Adb.urlPatterns[j][0], Adb.urlPatterns[j][1]);
+    var nodes, a, i = 0, j = 0, selector, r, s;
+    for (; i < Adb.abbrevRules.length; i++) {
+      selector = Adb.abbrevRules[i][0];
+      r = Adb.abbrevRules[i][1];
+      s = Adb.abbrevRules[i][2];
+      nodes = document.querySelectorAll(selector);
+      for (j = 0; j < nodes.length; j++) {
+        a = nodes[j];
+        a.setAttribute("href", a.href.replace(r, s));
       }
     }
   },
