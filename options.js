@@ -4,7 +4,8 @@ var bg = chrome.extension.getBackgroundPage(),
     enableSelectorRules: 'selectorRules',
     enableAdbCss: null,
     enableUserCss: 'userCss',
-    enableExceptionRules: 'exceptionRules'
+    enableExceptionRules: 'exceptionRules',
+    enableAbbrevUrl: null
   },
   checkBoxes = [];
 
