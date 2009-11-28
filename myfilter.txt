@@ -48,3 +48,10 @@ yahoo.co.jp###pos-lrec
 yahoo.co.jp###pos-ct
 yahoo.co.jp###myyads
 yahoo.co.jp##param[value*="ah.yimg.jp/bdv"]
+http://www.47news.jp##.topbana
+##.adbox
+##.SideAds
+##.ads-footer-navigation
+###ads-article
+##img[src*="/adv/"]
+##param[value="http://img.47news.jp/flash/mitsuki.swf"]
