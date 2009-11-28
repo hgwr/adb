@@ -5,6 +5,7 @@ window.AdbData = {
   enableAdbCss: true,
   enableUserCss: true,
   enableExceptionRules: true,
+  enableAbbrevUrl: false,
   xpathRules: [ ],
   xpathRulesText: "",
   selectorRules: [ ],
