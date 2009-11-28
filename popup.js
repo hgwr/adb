@@ -59,7 +59,7 @@ function prepareForm() {
       $('rule').value = bg.AdbData.popupForm.rule;
     }
   } else {
-    bg.AdbData.popupForm = { }
+    bg.AdbData.popupForm = { kind: 'selector' };
     bg.AdbHelper.saveData();
   }
 }
