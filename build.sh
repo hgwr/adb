@@ -21,4 +21,11 @@ git-archive --format=tar --prefix="build/${APP}/" HEAD | tar xvf -
 ./generate_rules.rb
 cp adb.css selectors_generated.js	xpaths_generated.js build/adb/
 
+rm build/adb/.gitignore
+rm build/adb/build.sh
+rm build/adb/easylist.txt
+rm build/adb/generate_rules.rb
+rm build/adb/myfilter.txt
+rm build/adb/test_generate_rules.rb
+
 # $CHROME --pack-extension="build/${APP}" --pack-extension-key="../${APP}.pem"
