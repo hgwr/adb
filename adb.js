@@ -90,6 +90,21 @@ var Adb = {
     }
   },
 
+  urlPatterns: [
+    [new RegExp('https?://(?:www.)?amazon.co.jp/.*/?(?:exec/obidos/ASIN|o/ASIN|dp)/([0-9]{10,})/?.*'), 'http://www.amazon.co.jp/dp/$1/']
+  ],
+  
+  abbrevUrl: function() {
+    var nodes = document.querySelectorAll('a[href="amazon.co.jp"]'),
+      i = 0, len = nodes.len, a, j = 0;
+    for (; i < len; i++) {
+      a = nodes[i];
+      for (j = 0; j < Adb.urlPatterns.length; j++) {
+        a.href = a.href.replace(Adb.urlPatterns[j][0], Adb.urlPatterns[j][1]);
+      }
+    }
+  },
+
   applyData: function (data) {
     var blockMethod = Adb.nodeOperators[data.blockMethod],
       i = 0, len = 0;
@@ -114,6 +129,9 @@ var Adb = {
     }
     if (data.enableUserCss) {
       Adb.addUserStyleSheet(data.userCss);
+    }
+    if (data.enableAbbrevUrl) {
+      Adb.abbrevUrl();
     }
   },
 
