@@ -59,9 +59,8 @@ def compose_xpath(tags, attrs, value)
 end
 
 def default_xpath(line)
-  compose_xpath(['a'], ['href'], line) +
-    '|' +
-    compose_xpath(['embed', 'iframe', 'img', 'object'], ['src'], line)
+  compose_xpath(['a'], ['href'], line) # + '|' +
+  # compose_xpath(['embed', 'iframe', 'img', 'object'], ['src'], line)
 end
 
 PATTERNS = {
