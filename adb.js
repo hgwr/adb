@@ -99,7 +99,6 @@ var Adb = {
       '$1',
       function (s) { return decodeURIComponent(s); } ]
   ],
-  //  http://pt.afl.rakuten.co.jp/c/0685865d.70c9573c/?url=http%3a%2f%2fitem.rakuten.co.jp%2fbigbe%2f25931%2f
   
   abbrevUrl: function() {
     var nodes, a, i = 0, j = 0, selector, r, s, f, newUrl;
