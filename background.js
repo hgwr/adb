@@ -113,7 +113,12 @@ window.AdbHelper.DEFAULT_XPATH_RULES = [
   [[], '//*[contains(@src, "ad_script")]'],
   [[], '//img[contains(@src, "ad_banner")]'],
   [[], '//embed[contains(@src, "clickTAG")]/..'],
+  [[], '//embed[contains(@src, "bizad.nikkei")]/..'],
+  [[], '//embed[contains(@src, "doubleclick.net/")]/..'],
+  [[], '//embed[contains(@src,"yimg.jp/bdv/")]/..'],
+  [[], '//embed[@src="http://img.47news.jp/flash/mitsuki.swf"]/..'],
   [[], '//script[contains(@src, "doubleclick.net/")]/following-sibling::node()'],
+  [[], '//script[contains(@src, "adServe")]/following-sibling::node()'],
   [[], '//a[starts-with(@href, "http://rd") and contains(@href, "yahoo.co.jp/rd")]']
 ].concat(GENERATED_XPATHS);
 window.AdbHelper.DEFAULT_XPATH_RULES_TEXT = MARKER +
@@ -123,6 +128,8 @@ window.AdbHelper.DEFAULT_SELECTOR_RULES = [
   [[], 'iframe[src*="adv"]'],
   [[], 'iframe[src*="ads"]'],
   [[], 'iframe[src*="doubleclick.net"]'],
+  [[], 'img[src^="http://bannerfarm.ace.advertising.com/"]'],
+  [[], '*[src*="impact-ad.jp/"]'],
   [[], '.adv']
 ].concat(GENERATED_SELECTORS);
 window.AdbHelper.DEFAULT_SELECTOR_RULES_TEXT = MARKER +
