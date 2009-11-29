@@ -93,19 +93,27 @@ var Adb = {
   abbrevRules: [
     [ 'a[href*="amazon.co.jp"], a[href*="amazon.jp"], a[href*="amazon.com"], a[href*="amazon.co.uk"]',
       new RegExp('^https?://(?:www.)?amazon(\\.co\\.jp|\\.jp|\\.com|\\.co\\.uk)/.*/?(?:exec/obidos/ASIN|o/ASIN|dp)/([0-9]{10,})/?.*'),
-      'http://www.amazon$1/dp/$2/' ]
+      'http://www.amazon$1/dp/$2/' ],
+    [ 'a[href*="afl.rakuten.co.jp/"]',
+      new RegExp('^https?://[^/]+?\\.afl\\.rakuten\\.co\\.jp/.*(?:url|pc)=(http[^&]+)&?.*'),
+      '$1',
+      function (s) { return decodeURIComponent(s); } ]
   ],
+  //  http://pt.afl.rakuten.co.jp/c/0685865d.70c9573c/?url=http%3a%2f%2fitem.rakuten.co.jp%2fbigbe%2f25931%2f
   
   abbrevUrl: function() {
-    var nodes, a, i = 0, j = 0, selector, r, s;
+    var nodes, a, i = 0, j = 0, selector, r, s, f, newUrl;
     for (; i < Adb.abbrevRules.length; i++) {
       selector = Adb.abbrevRules[i][0];
       r = Adb.abbrevRules[i][1];
       s = Adb.abbrevRules[i][2];
+      f = Adb.abbrevRules[i][3];
       nodes = document.querySelectorAll(selector);
       for (j = 0; j < nodes.length; j++) {
         a = nodes[j];
-        a.setAttribute("href", a.href.replace(r, s));
+        newUrl = a.href.replace(r, s);
+        if (f) { newUrl = f(newUrl); }
+        a.setAttribute("href", newUrl);
       }
     }
   },
