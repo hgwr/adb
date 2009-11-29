@@ -59,8 +59,8 @@ def compose_xpath(tags, attrs, value)
 end
 
 def default_xpath(line)
-  compose_xpath(['a'], ['href'], line) # + '|' +
-  # compose_xpath(['embed', 'iframe', 'img', 'object'], ['src'], line)
+  compose_xpath(['a'], ['href'], line) + '|' +
+    compose_xpath(['embed', 'iframe', 'img', 'object'], ['src'], line)
 end
 
 PATTERNS = {
@@ -108,7 +108,7 @@ def main
   end
   
   open('selectors_generated.js', 'w') do |f|
-    f.write("var GENERATED_SELECTORS = [\n");
+    f.write("var GENERATED_SELECTORS = [\n")
     f.write(selectors_with_hosts.map do |host_regexps, selector|
                if host_regexps[0] == '' and host_regexps[1] == ''
                  "  [[], '%s']" % [selector]
@@ -124,8 +124,9 @@ def main
   end
 
   open('xpaths_generated.js', 'w') do |f|
-    f.write("var GENERATED_XPATHS = [\n");
-    f.write(xpaths.map { |s| "  [[], '%s']" % s }.join(",\n"))
+    f.write("var GENERATED_XPATHS = [\n")
+    # f.write(xpaths.map { |s| "  [[], '%s']" % s }.join(",\n"))
+    f.write(" /* auto-generation was disabled */ \n")
     f.write("];\n")
   end
 end
