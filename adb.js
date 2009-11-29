@@ -55,8 +55,8 @@ var Adb = {
   },
 
   applyXPathRules: function (blockMethod, rules) {
-    var i = 0, j = 0, len, xpathResult;
-    for (; i < rules.length; i++) {      
+    var i = 0, j = 0, len, xpathResult, rules_len = rules.length;
+    for (; i < rules_len; i++) {      
       if (! Adb.assertLocation(rules[i][0])) { continue; }
       xpathResult = null;
       try {
@@ -73,8 +73,8 @@ var Adb = {
   },
 
   applySelectorRules: function (blockMethod, rules) {
-    var i = 0, j = 0, nodes, len;
-    for (; i < rules.length; i++) {
+    var i = 0, j = 0, nodes, len, rules_len = rules.length;
+    for (; i < rules_len; i++) {
       if (! Adb.assertLocation(rules[i][0])) { continue; }
       nodes = null;
       try {
@@ -101,8 +101,8 @@ var Adb = {
   ],
   
   abbrevUrl: function() {
-    var nodes, a, i = 0, j = 0, selector, r, s, f, newUrl;
-    for (; i < Adb.abbrevRules.length; i++) {
+    var nodes, a, i = 0, j = 0, selector, r, s, f, newUrl, rules_len = Adb.abbrevRules.length;
+    for (; i < rules_len; i++) {
       selector = Adb.abbrevRules[i][0];
       r = Adb.abbrevRules[i][1];
       s = Adb.abbrevRules[i][2];
