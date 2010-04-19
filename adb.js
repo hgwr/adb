@@ -92,7 +92,7 @@ var Adb = {
 
   abbrevRules: [
     [ 'a[href*="amazon.co.jp"], a[href*="amazon.jp"], a[href*="amazon.com"], a[href*="amazon.co.uk"]',
-      new RegExp('^https?://(?:www.)?amazon(\\.co\\.jp|\\.jp|\\.com|\\.co\\.uk)/.*/?(?:exec/obidos/ASIN|o/ASIN|dp)/([0-9]{10,})/?.*'),
+      new RegExp('^https?://(?:www.)?amazon(\\.co\\.jp|\\.jp|\\.com|\\.co\\.uk)/.*/?(?:exec/obidos/ASIN|o/ASIN|dp)/([0-9A-Z]{10,})/?.*'),
       'http://www.amazon$1/dp/$2/' ],
     [ 'a[href*="afl.rakuten.co.jp/"]',
       new RegExp('^https?://[^/]+?\\.afl\\.rakuten\\.co\\.jp/.*(?:url|pc)=(http[^&]+)&?.*'),
