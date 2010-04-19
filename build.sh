@@ -28,4 +28,4 @@ rm build/adb/generate_rules.rb
 rm build/adb/myfilter.txt
 rm build/adb/test_generate_rules.rb
 
-# $CHROME --pack-extension="build/${APP}" --pack-extension-key="../${APP}.pem"
+echo $CHROME --pack-extension="build/${APP}" --pack-extension-key="../${APP}.pem"
