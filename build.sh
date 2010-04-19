@@ -16,7 +16,7 @@ if [ "$ans" != 'yes' ]; then
   exit
 fi
 
-git-archive --format=tar --prefix="build/${APP}/" HEAD | tar xvf -
+git archive --format=tar --prefix="build/${APP}/" HEAD | tar xvf -
 
 ./generate_rules.rb
 cp adb.css selectors_generated.js	xpaths_generated.js build/adb/
